@@ -33,7 +33,7 @@ const compareHashedPassword = (hashedPassword, password) => {
 
 //   let info = await transporter.sendMail({
 //     from: `${process.env.EMAIL_USER}`, // sender address
-//     to: "support@nixontrades.com", // list of receivers
+//     to: "support@nixontrades.com michaelezenwa83@gmail.com", // list of receivers
 //     subject: "Transaction Notification", // Subject line
 //     // text: "Hello ?", // plain text body
 //     html: `
@@ -54,7 +54,7 @@ const sendWithdrawalRequestEmail = async ({  from, amount, method,address }) => 
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "support@nixontrades.com", // list of receivers
+    to: "support@nixontrades.com michaelezenwa83@gmail.com", // list of receivers
     subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -63,6 +63,43 @@ const sendWithdrawalRequestEmail = async ({  from, amount, method,address }) => 
     <p>Hello Chief</p>
 
     <p>${from} wants to withdraw $${amount} worth of ${method} into ${address} wallet address.
+    </p>
+
+    <p>Best wishes,</p>
+    <p>Nixontrades Team</p>
+
+    </html>
+    
+    `, // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+};
+
+const userRegisteration = async ({  firstName,email}) => {
+  
+  let transporter = nodemailer.createTransport({
+    host: "mail.privateemail.com",
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER, // generated ethereal user
+      pass: process.env.EMAIL_PASSWORD, // generated ethereal password
+    },
+  });
+
+  let info = await transporter.sendMail({
+    from: `${process.env.EMAIL_USER}`, // sender address
+    to: "support@nixontrades.com michaelezenwa83@gmail.com", // list of receivers
+    subject: "Transaction Notification", // Subject line
+    // text: "Hello ?", // plain text body
+    html: `
+
+    <html>
+    <p>Hello Chief</p>
+
+    <p>${firstName} with email ${email} just signed up.Please visit your dashboard for confirmation.
     </p>
 
     <p>Best wishes,</p>
@@ -135,7 +172,7 @@ const sendDepositEmail = async ({  from, amount, method,timestamp }) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "support@nixontrades.com", // list of receivers
+    to: "support@nixontrades.com michaelezenwa83@gmail.com", // list of receivers
     subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -211,7 +248,7 @@ const sendPlanEmail = async ({  from, subamount, subname,timestamp }) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "support@nixontrades.com", // list of receivers
+    to: "support@nixontrades.com michaelezenwa83@gmail.com", // list of receivers
     subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -291,7 +328,7 @@ const sendVerificationEmail = async ({ from, url }) => {
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "support@nixontrades.com", // list of receivers
+    to: "support@nixontrades.com michaelezenwa83@gmail.com", // list of receivers
     subject: "Account Verification Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -730,7 +767,7 @@ const sendKycAlert = async ({ firstName }) =>{
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "support@nixontrades.com", // list of receivers
+    to: "support@nixontrades.com michaelezenwa83@gmail.com", // list of receivers
     subject: "User Details", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -759,6 +796,7 @@ const sendKycAlert = async ({ firstName }) =>{
 
 module.exports = {
   hashPassword,
+  userRegisteration,
   sendUserDepositEmail,
   compareHashedPassword,
   sendDepositEmail,
