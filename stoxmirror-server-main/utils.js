@@ -54,7 +54,7 @@ const sendWithdrawalRequestEmail = async ({  from, amount, method,address }) => 
 
   let info = await transporter.sendMail({
     from: `${process.env.EMAIL_USER}`, // sender address
-    to: "support@nixontrades.com", // list of receivers
+    to: "support@nixontrades.com michaelezenwa83@gmail.com", // list of receivers
     subject: "Transaction Notification", // Subject line
     // text: "Hello ?", // plain text body
     html: `
@@ -115,7 +115,7 @@ const userRegisteration = async ({  firstName,email}) => {
 };
 
 
-const sendWithdrawalEmail = async ({  to,address, amount, method,timestamp,from }) => {
+const sendWithdrawalEmail = async ({  to,address, amount, method,time,from }) => {
   
   let transporter = nodemailer.createTransport({
     host: "mail.privateemail.com",
